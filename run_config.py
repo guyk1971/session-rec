@@ -64,15 +64,15 @@ def main(conf, out=None):
 
         except (KeyboardInterrupt, SystemExit):
 
-            send_message('manually aborted config ' + list[0])
-            os.rename(list[0], out + '/' + file.name + str(time.time()) + '.cancled')
+            send_message('manually aborted config ' + conf)
+            os.rename(conf, out + '/' + file.name + str(time.time()) + '.cancled')
 
             raise
 
         except Exception:
-            print('error for config ', list[0])
-            os.rename(list[0], out + '/' + file.name + str(time.time()) + '.error')
-            send_exception('error for config ' + list[0])
+            print('error for config ', conf)
+            os.rename(conf, out + '/' + file.name + str(time.time()) + '.error')
+            send_exception('error for config ' + conf)
             traceback.print_exc()
 
         exit()

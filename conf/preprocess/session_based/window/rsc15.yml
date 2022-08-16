@@ -2,7 +2,7 @@ type: window # single|window
 mode: session_based # session_based | session_aware
 preprocessor: rsc15 #
 data:
-  folder: data/rsc15/raw/
+  folder: /nfs/iil/home/gkoren2/local/datasets/recsys/seq_recsys_datasets/rsc15/raw/
   prefix: rsc15-clicks
 
 filter:
@@ -17,4 +17,4 @@ params:
   days_shift: 31 #only window
 
 output:
-  folder: data/rsc15/slices/
+  folder: /nfs/iil/home/gkoren2/local/datasets/recsys/seq_recsys_datasets/rsc15/slices/
