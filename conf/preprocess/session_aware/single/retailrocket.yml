@@ -2,7 +2,7 @@ type: single # single
 mode: session_aware # session_based | session_aware
 preprocessor: retailrocket_aware # dataset (folder) name
 data:
-  folder: data/retailrocket/raw/
+  folder: /nfs/iil/home/gkoren2/local/datasets/recsys/seq_recsys_datasets/retailrocket/
   prefix: events
 
 filter:
@@ -13,7 +13,7 @@ filter:
 
 params:
   min_session_length: 2 #3
-  test_sessions: 1
+#  test_sessions: 1
 
 output:
-  folder: data/retailrocket/prepared/
+  folder: /nfs/iil/home/gkoren2/local/datasets/recsys/seq_recsys_datasets/retailrocket/prepared/
