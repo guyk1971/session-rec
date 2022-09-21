@@ -120,7 +120,7 @@ def load_data( file ) :
     data_start = datetime.fromtimestamp( data.Time.min(), timezone.utc )
     data_end = datetime.fromtimestamp( data.Time.max(), timezone.utc )
     
-    del data['TimeTmp']
+    # del data['TimeTmp']
     
     print('Loaded data set\n\tEvents: {}\n\tSessions: {}\n\tItems: {}\n\tSpan: {} / {}\n\n'.
           format( len(data), data.SessionId.nunique(), data.ItemId.nunique(), data_start.date().isoformat(), data_end.date().isoformat() ) )

@@ -1,0 +1,17 @@
+---
+type: single # single|window
+mode: session_based # session_based | session_aware
+preprocessor: tmall # dataset (folder) name
+data:
+  folder: /home/gkoren2/datasets/recsys/seq_recsys_datasets/tmall/raw/
+  prefix: dataset15
+
+filter:
+  min_item_support: 5
+  min_session_length: 2
+
+params:
+  days_test: 7
+
+output:
+  folder: /home/gkoren2/datasets/recsys/seq_recsys_datasets/tmall/prepared/

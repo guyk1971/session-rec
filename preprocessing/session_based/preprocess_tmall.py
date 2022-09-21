@@ -64,11 +64,11 @@ def preprocess_buys( path=DATA_PATH, file=DATA_FILE, path_proc=DATA_PATH_PROCESS
     store_buys(buys, path_proc+file)
     
     
-def load_data( file, version ) : 
+def load_data( file, version=VERSION) : 
         
     if( version == 15 ):
         #load csv
-        data = pd.read_csv( file+'.csv', sep=',', header=0, usecols=[0,1,5,6], dtype={0:np.int32, 1:np.int32, 5:str, 6:np.int32}, nrows=1000 )
+        data = pd.read_csv( file+'.csv', sep='\t', header=0, usecols=[0,1,5,6], dtype={0:np.int32, 1:np.int32, 5:str, 6:np.int32}, nrows=1000 )
         #specify header names
         data.columns = ['UserId', 'ItemId', 'TimeStr', 'ActionType']
         buy_key = 2

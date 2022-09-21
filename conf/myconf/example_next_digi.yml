@@ -1,0 +1,46 @@
+type: single # single|window, maybe add opt
+key: baselines_and_models_and_hybrids #added to the csv names
+evaluation: evaluation #evaluation|evaluation_last|evaluation_multiple|evaluation_user_based|evaluation_user_based_multiple
+data:
+  name: diginetica #added in the end of the csv names
+  folder: /home/gkoren2/datasets/recsys/seq_recsys_datasets/diginetica/prepared/
+  prefix: train-item-views
+#  slices: 5 #only window
+#  skip: [0,3] #only window
+  opts: {sessions_test: 100}
+
+results:
+  folder: results/next/diginetica/single/
+
+metrics:
+- class: accuracy.HitRate
+  length: [3,5,10,15,20]
+- class: accuracy.MRR
+  length: [3,5,10,15,20]
+- class: accuracy_multiple.NDCG
+  length: [3,5,10,15,20]
+- class: coverage.Coverage
+  length: [20]
+- class: popularity.Popularity
+  length: [20]
+- class: saver.Saver
+  length: [50]
+- class: time_memory_usage.Time_usage_training
+- class: time_memory_usage.Time_usage_testing
+#- class: time_memory_usage.Memory_usage
+
+algorithms:
+# ex with parameters
+# models
+- class: gru4rec.gru4rec.GRU4Rec
+  params: { loss: 'top1-max', final_act: 'linear', dropout_p_hidden: 0.1, learning_rate: 0.08, momentum: 0.1, constrained_embedding: False }
+  key: gru4rec
+- class: narm.narm.NARM
+  params: { epochs: 20, lr: 0.007, hidden_units: 100, factors: 100 }
+  key: narm
+# baselines
+- class: baselines.sr.SequentialRules
+  params: { steps: 20, weighting: quadratic }
+  key: sr
+- class: baselines.ar.AssociationRules
+  key: ar
